@@ -1,0 +1,144 @@
+$burgerBreakpoint: 1100px;
+
+.header {
+    // background-color: gray;
+    padding: 14px 0;
+}
+
+.logo {
+    width: 150px;
+    max-width: 150px;
+    display: block;
+
+    @media (max-width: $burgerBreakpoint) {
+        margin-right: auto;
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    @media (max-width: $burgerBreakpoint) {
+        justify-content: flex-start;
+    }
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+
+    @media (max-width: $burgerBreakpoint) {
+        display: none;
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100dvh;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(15px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        transition: right 0.4s;
+
+        &.active {
+            right: 0;
+        }
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        text-transform: capitalize;
+        font-size: 20px;
+        line-height: 1.1;
+        color: #f9f7f7;
+        font-variant: small-caps;
+
+        transition: 0.4s;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0px;
+
+        &::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background-color: #fff;
+            display: block;
+
+            transition: 0.4s;
+        }
+
+        &:hover {
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.lang {
+    img {
+        width: 36px;
+    }
+}
+
+.apply_btn {
+    @media (max-width: 480px) {
+        display: none;
+    }
+}
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    position: relative;
+    z-index: 11;
+
+    width: 30px;
+
+    display: none;
+
+    @media (max-width: $burgerBreakpoint) {
+        display: flex;
+    }
+
+    span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+        transition: 0.4s;
+    }
+
+    &.active {
+        span {
+            &:nth-child(1) {
+                transform: translate(0, 6px) rotate(40deg);
+            }
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            &:nth-child(3) {
+                transform: translate(0, -7px) rotate(-40deg);
+            }
+        }
+    }
+}
