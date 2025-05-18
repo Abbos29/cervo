@@ -3,6 +3,19 @@ $burgerBreakpoint: 1100px;
 .header {
     // background-color: gray;
     padding: 14px 0;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+
+    background: #121212;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    &.mainpage {
+        background: none;
+        box-shadow: none;
+    }
 }
 
 .logo {
@@ -27,6 +40,7 @@ $burgerBreakpoint: 1100px;
 
     @media (max-width: $burgerBreakpoint) {
         justify-content: flex-start;
+        gap: 14px;
     }
 }
 
