@@ -30,6 +30,10 @@ $burgerBreakpoint: 1100px;
     @media (max-width: $burgerBreakpoint) {
         margin-right: auto;
     }
+    @media (max-width: 480px) {
+        max-width: 120px;
+        width: 120px;
+    }
 
     img {
         width: 100%;

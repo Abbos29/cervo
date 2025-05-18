@@ -1,3 +1,4 @@
+import Benefits from '@/components/layout/Benefits/Benefits'
 import Header from '@/components/layout/Header/Header'
 import Hero from '@/components/layout/Hero/Hero'
 import Numbers from '@/components/layout/Numbers/Numbers'
@@ -10,6 +11,7 @@ const Home = () => {
       <HeadSeo title={"Главная страница"} description={"Описание"} />
       <Hero />
       <Numbers />
+      <Benefits />
     </>
   )
 }
