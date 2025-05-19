@@ -1,0 +1,25 @@
+{
+    "nav": {
+        "link1": "Dashboard",
+        "link2": "Products",
+        "link3": "Services",
+        "link4": "About us",
+        "link5": "Contacts"
+    },
+    "feedback": {
+        "title1": "Leave your",
+        "title2": "feedback or suggestion",
+        "title3": "we are always here to help!",
+        "accept": "I accept",
+        "link": "terms and conditions",
+        "accept1": "for the use of my data.",
+        "placeholder": "Feedback or suggestion"
+    },
+    "footer": {
+        "title": "All rights reserved."
+    },
+    "btn": {
+        "apply": "Apply now",
+        "send": "Send"
+    }
+}

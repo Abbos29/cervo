@@ -5,20 +5,21 @@ import Container from '@/components/ui/Container/Container'
 import Link from 'next/link'
 import Button from '@/components/ui/Button/Button'
 import Dropdown from '@/components/ui/Dropdown/Dropdown'
-
-const navLinks = [
-    { href: '/', label: 'Dashboard' },
-    { href: '/products', label: 'Products' },
-    { href: '/services', label: 'Services' },
-    { href: '/about', label: 'About us' },
-    { href: '/contacts', label: 'Contacts' },
-]
+import { nav_links } from '@/db/nav_links'
+import { useTranslation } from 'react-i18next'
+import { useIsClient } from 'usehooks-ts'
 
 const Header = () => {
     const [isActive, setIsActive] = useState(false)
     const [scrolled, setScrolled] = useState(false)
     const router = useRouter()
     const isMainPage = router.pathname === '/'
+    const { t, i18n } = useTranslation()
+    const isClient = useIsClient()
+
+    const changeLanguage = (language) => {
+        i18n.changeLanguage(language);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -42,29 +43,29 @@ const Header = () => {
 
     return (
         <header className={`${s.header} ${mainPageClass} ${scrolled ? s.scrolled : ''}`}>
-            <Container>
+            {isClient && <Container>
                 <div className={s.wrapper}>
                     <Link className={s.logo} href="/">
                         <img src="/img/logo.png" alt="logo" />
                     </Link>
 
                     <nav className={`${s.nav} ${isActive ? s.active : ''}`}>
-                        {navLinks.map(({ href, label }) => (
-                            <Link key={href} href={href} onClick={handleLinkClick}>
-                                {label}
+                        {nav_links.map((el, i) => (
+                            <Link key={i} href={el.href} onClick={handleLinkClick}>
+                                {t(el.title)}
                             </Link>
                         ))}
                     </nav>
 
                     <div className={s.lang}>
                         <Dropdown
-                            defaultSelected="us"
-                            onChange={(langId) => console.log(`Выбран язык: ${langId}`)}
+                            defaultSelected={i18n.language}
+                            onChange={(langId) => changeLanguage(langId)}
                         />
                     </div>
 
                     <div className={s.apply_btn}>
-                        <Button apply>Apply now</Button>
+                        <Button apply>{t("btn.apply")}</Button>
                     </div>
 
                     <div onClick={toggleMenu} className={`${s.burger} ${isActive ? s.active : ''}`}>
@@ -73,7 +74,7 @@ const Header = () => {
                         <span></span>
                     </div>
                 </div>
-            </Container>
+            </Container>}
         </header>
     )
 }
