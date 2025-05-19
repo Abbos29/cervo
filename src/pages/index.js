@@ -1,4 +1,5 @@
 import Benefits from '@/components/layout/Benefits/Benefits'
+import ContactsWrap from '@/components/layout/ContactsWrap/ContactsWrap'
 import Header from '@/components/layout/Header/Header'
 import Hero from '@/components/layout/Hero/Hero'
 import Numbers from '@/components/layout/Numbers/Numbers'
@@ -12,6 +13,7 @@ const Home = () => {
       <Hero />
       <Numbers />
       <Benefits />
+      <ContactsWrap />
     </>
   )
 }
