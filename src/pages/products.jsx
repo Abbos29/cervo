@@ -1,3 +1,4 @@
+import ProductsWrap from '@/components/layout/ProductsWrap/ProductsWrap'
 import HeadSeo from '@/components/ui/HeadSeo/HeadSeo'
 import { axiosInstance } from '@/utils/axios'
 import React from 'react'
@@ -16,7 +17,7 @@ const ProductsPage = ({ data }) => {
     return (
         <>
             <HeadSeo title={"Главная страница"} description={"Описание"} />
-
+            <ProductsWrap />
 
         </>
     )
