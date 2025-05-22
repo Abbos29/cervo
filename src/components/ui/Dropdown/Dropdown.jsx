@@ -3,8 +3,8 @@ import s from './Dropdown.module.scss'
 
 const Dropdown = ({
     options = [
-        { id: 'us', label: 'English', icon: '/img/flag-icon-us.svg' },
-        { id: 'ru', label: 'Русский', icon: '/img/flag-icon-ru.svg' },
+        { id: 'en', label: 'English', icon: '/img/flag-icon-us.svg' },
+        { id: 'ru', label: 'Русский', icon: '/img/flag-icon-ru.webp' },
         { id: 'ar', label: 'Arabic', icon: '/img/flag-icon-ar.svg' }
     ],
     defaultSelected = 'en',

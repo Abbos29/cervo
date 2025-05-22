@@ -1,0 +1,88 @@
+{
+    "nav": {
+        "link1": "Dashboard",
+        "link2": "Products",
+        "link3": "Services",
+        "link4": "About us",
+        "link5": "Contacts"
+    },
+    "feedback": {
+        "title1": "Leave your",
+        "title2": "feedback or suggestion",
+        "title3": "we are always here to help!",
+        "accept": "I accept",
+        "link": "terms and conditions",
+        "accept1": "for the use of my data.",
+        "placeholder": "Feedback or suggestion"
+    },
+    "footer": {
+        "title": "All rights reserved."
+    },
+    "btn": {
+        "apply": "Apply now",
+        "send": "Send"
+    },
+    "contactsWrap": {
+        "pretitle": "Contacts",
+        "title": "Let’s stay connected",
+        "description": "It's never been easier to get in touch with Transit Company Inc. Call us, use our live chat widget or email and we'll get back to you as soon as possible!",
+        "email": "Email",
+        "phone": "Phone",
+        "socials": "Socials"
+    },
+    "numbers": {
+        "pretitle": "Numbers",
+        "title": "We believe in numbers",
+        "cards": [
+            {
+                "title": "Products"
+            },
+            {
+                "title": "Years on the market"
+            },
+            {
+                "title": "Global distributors"
+            },
+            {
+                "title": "Satisfied clients"
+            }
+        ]
+    },
+    "benefits": {
+        "pretitle": "Benefits",
+        "title": "Advantages of the Company",
+        "description": "We manufacture car batteries, wheels, and tires and are looking for distributors. Flexible terms, reliable delivery, and support.",
+        "cards": [
+            {
+                "icon": "/img/benefits-icon-1.svg",
+                "title": "Wide Range of Products",
+                "text": "A variety of car rims, tires and batteries for all types of vehicles"
+            },
+            {
+                "icon": "/img/benefits-icon-2.svg",
+                "title": "Guaranteed Quality",
+                "text": "Certified products from trusted manufacturers"
+            },
+            {
+                "icon": "/img/benefits-icon-3.svg",
+                "title": "International Delivery",
+                "text": "Fast and reliable shipping to partners worldwide"
+            },
+            {
+                "icon": "/img/benefits-icon-4.svg",
+                "title": "Personal Manager for Clients",
+                "text": "Individual approach and prompt solutions to any tasks"
+            },
+            {
+                "icon": "/img/benefits-icon-5.svg",
+                "title": "24/7 Customer Support",
+                "text": "Professional assistance anytime, anywhere"
+            },
+            {
+                "icon": "/img/benefits-icon-6.svg",
+                "title": "Profitable Wholesale Purchases",
+                "text": "Exclusive discounts and offers for wholesale clients"
+            }
+        ]
+    }
+}
