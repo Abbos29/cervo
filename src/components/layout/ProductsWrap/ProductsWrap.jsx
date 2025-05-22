@@ -2,38 +2,35 @@ import React from 'react'
 import s from './ProductsWrap.module.scss'
 import Container from '@/components/ui/Container/Container'
 import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
+import { useIsClient } from 'usehooks-ts'
+import { useTranslation } from 'react-i18next'
+import Link from 'next/link'
 
-const ProductsWrap = () => {
+const ProductsWrap = ({ data }) => {
+    const isClient = useIsClient()
+    const { t } = useTranslation()
     return (
         <>
-            <section className={s.productsWrap}>
+            {isClient && <section className={s.productsWrap}>
                 <Container>
                     <Breadcrumbs />
 
                     <div className={s.wrapper}>
-                        <div className={s.card}>
-                            <img src="" alt="" />
-                            <h3>Batteries</h3>
-                            <p>Grip the road with confidence.Our tires are engineered for superior performance, safety, and long-lasting durability on every journey</p>
-                        </div>
-                        <div className={s.card}>
-                            <img src="" alt="" />
-                            <h3>Batteries</h3>
-                            <p>Grip the road with confidence.Our tires are engineered for superior performance, safety, and long-lasting durability on every journey</p>
-                        </div>
-                        <div className={s.card}>
-                            <img src="" alt="" />
-                            <h3>Batteries</h3>
-                            <p>Grip the road with confidence.Our tires are engineered for superior performance, safety, and long-lasting durability on every journey</p>
-                        </div>
+                        {data?.map((el) => (
+                            <Link href={`/category/${el?.id}`} className={s.card} key={el?.id}>
+                                <img src={el?.icon} alt={el?.name} />
+                                <h3>{el?.name}</h3>
+                                <p>{el?.description}</p>
+                            </Link>
+                        ))}
                     </div>
 
                     <div className={s.inner}>
-                        <h2>Battery, Tire & Wheel Solutions Delivering the Quality and Style Your Vihecle Deserves</h2>
-                        <p>From premium tires to custom wheels and reliable batteries, we’re here to elevate your driving experience anytime, anywhere.</p>
+                        <h2>{t("products.title")}</h2>
+                        <p>{t("products.description")}</p>
                     </div>
                 </Container>
-            </section>
+            </section>}
         </>
     )
 }
