@@ -16,7 +16,7 @@ const ProductsPage = ({ data }) => {
 
     return (
         <>
-            <HeadSeo title={"Главная страница"} description={"Описание"} />
+            <HeadSeo title={"Продукты"} description={"Описание"} />
             <ProductsWrap />
 
         </>
