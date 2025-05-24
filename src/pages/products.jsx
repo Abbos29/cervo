@@ -12,8 +12,6 @@ export const getServerSideProps = async () => {
 }
 
 const ProductsPage = ({ data }) => {
-    console.log(data);
-
     return (
         <>
             <HeadSeo title={"Продукты"} description={"Описание"} />
