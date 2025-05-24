@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './ProductWrap.module.scss'
 import Container from '@/components/ui/Container/Container'
 import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs';
 
-const ProductWrap = () => {
+const ProductWrap = ({ data }) => {
+    const [active, setActive] = useState(0)
+
     const characteristics = [
-        { name: 'Dry', rating: 2.8 },
-        { name: 'Wet', rating: 2.2 },
-        { name: 'Snow', rating: 3.6 },
-        { name: 'Noise', rating: 2.8 },
-        { name: 'Treadwear', rating: 4.5 }
+        { name: 'Dry', rating: data?.dry },
+        { name: 'Wet', rating: data?.wet },
+        { name: 'Snow', rating: data?.snow },
+        { name: 'Noise', rating: data?.noise },
+        { name: 'Treadwear', rating: data?.tread_wear }
     ];
 
     const renderRatingFields = (rating) => {
@@ -32,40 +34,30 @@ const ProductWrap = () => {
                     <div className={s.wrapper}>
                         <div className={s.gallery}>
                             <div className={s.gallery_images}>
-                                <img src="/img/product-image-main.png" alt="image" />
-                                <img src="/img/product-image-main.png" alt="image" />
-                                <img src="/img/product-image-main.png" alt="image" />
-                                <img src="/img/product-image-main.png" alt="image" />
+                                {data?.images?.map((el, i) => (
+                                    <img className={i === active ? s.active : ''} onClick={() => setActive(i)} src={`https://cervo.pythonanywhere.com/${el}`} alt={i} key={i} />
+                                ))}
                             </div>
 
-                            <img className={s.gallery_main_image} src="/img/product-image-main.png" alt="image" />
+                            <img className={s.gallery_main_image} src={`https://cervo.pythonanywhere.com/${data?.images[active]}`} alt="image" />
                         </div>
 
                         <div className={s.content}>
                             <div className={s.top}>
-                                <h1>Cervo Tires - Evrolux</h1>
+                                <h1>{data?.name}</h1>
                                 <h2>Eurolux</h2>
                             </div>
 
-                            <h3>Feel the Comfort Every Day</h3>
+                            <h3>{data?.sub_title}</h3>
 
                             <p>
-                                CERVO EVROLUX car tires - which is an elastic shell
-                                located on the wheel rim. The tire is designed to absorb
-                                minor vibrations caused by imperfections in the road
-                                surface, to realize and absorb the forces occurring in
-                                the contact patch and provide a high coefficient
-                                of traction.
+                                {data?.description}
                             </p>
 
                             <div className={s.sizes}>
-                                <div>R14</div>
-                                <div>R15</div>
-                                <div>R16</div>
-                                <div>R17</div>
-                                <div>R18</div>
-                                <div>R19</div>
-                                <div>R20</div>
+                                {data?.sizes?.map((size, i) => (
+                                    <div key={i}>{size}</div>
+                                ))}
                             </div>
 
                             <div className={s.table}>

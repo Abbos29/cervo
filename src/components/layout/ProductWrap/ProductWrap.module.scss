@@ -70,7 +70,7 @@
                 border-color: #e74c3c;
             }
 
-            &:first-child {
+            &.active {
                 border-color: #e74c3c;
             }
         }
@@ -106,7 +106,7 @@
         font-weight: 500;
 
         @media (max-width: 480px) {
-          font-size: 18px;
+            font-size: 18px;
         }
     }
 }
@@ -166,8 +166,8 @@
         transition: all 0.3s ease;
 
         @media (max-width: 480px) {
-          padding: 12px;
-          font-size: 18px;
+            padding: 12px;
+            font-size: 18px;
         }
 
         &:hover {
@@ -214,12 +214,12 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
 
-        > b:first-child {
+        >b:first-child {
             grid-column: span 2;
         }
     }
 
-    > b {
+    >b {
         font-size: 20px;
         font-weight: 600;
         color: #2c3e50;
@@ -275,6 +275,7 @@
     @media (max-width: 768px) {
         width: 50px;
     }
+
     @media (max-width: 480px) {
         width: 44px;
     }

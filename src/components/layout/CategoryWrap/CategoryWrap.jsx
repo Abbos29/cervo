@@ -6,40 +6,42 @@ import { useIsClient } from 'usehooks-ts'
 import { useTranslation } from 'react-i18next'
 import Card from '@/components/ui/Card/Card'
 
-const CategoryWrap = ({ categoryProducts }) => {
+const CategoryWrap = ({ data }) => {
     const isClient = useIsClient()
     const { t } = useTranslation()
 
     return (
         <>
             {isClient && <section>
-                <Container>
-                    <div className={s.title_wrap}>
-                        <Breadcrumbs />
-                        <span>
-                            <button className={s.active}>Aluminum</button>
-                            <button className={s.btn}>Forged</button>
-                        </span>
-                    </div>
-
-                    {categoryProducts?.length ? (
+                {data?.length ? (
+                    <Container>
+                        <div className={s.title_wrap}>
+                            <Breadcrumbs />
+                            <span>
+                                <button className={s.active}>Aluminum</button>
+                                <button className={s.btn}>Forged</button>
+                            </span>
+                        </div>
                         <div className={s.products_wrapper}>
-                            {categoryProducts?.map((el) => {
+                            {data?.map((el) => {
                                 return (
-                                    <Card key={el?.id} id={el?.id} image={el?.image} name={el?.name} sizes={el?.sizes} />
+                                    <>
+                                        <Card key={el?.id} id={el?.id} image={el?.image} name={el?.name} sizes={el?.sizes} />
+                                    </>
                                 )
                             })}
                         </div>
-                    ) : (
-                        <div className={s.empty_wrap}>
-                            <h2>Not found...</h2>
-                        </div>
-                    )}
-
-                </Container>
+                    </Container>
+                ) : (
+                    <div className={s.empty_wrap}>
+                        <h2>{t("not_found")}</h2>
+                    </div>
+                )}
             </section>}
         </>
     )
 }
 
 export default CategoryWrap
+
+
