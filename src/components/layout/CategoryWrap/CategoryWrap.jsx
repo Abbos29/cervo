@@ -6,7 +6,7 @@ import { useIsClient } from 'usehooks-ts'
 import { useTranslation } from 'react-i18next'
 import Card from '@/components/ui/Card/Card'
 
-const CategoryWrap = ({ data }) => {
+const CategoryWrap = ({ data, category_name }) => {
     const isClient = useIsClient()
     const { t } = useTranslation()
 
@@ -16,7 +16,7 @@ const CategoryWrap = ({ data }) => {
                 {data?.length ? (
                     <Container>
                         <div className={s.title_wrap}>
-                            <Breadcrumbs />
+                            <Breadcrumbs lastTitle={category_name} />
                             <span>
                                 <button className={s.active}>Aluminum</button>
                                 <button className={s.btn}>Forged</button>

@@ -17,7 +17,7 @@ const ProductsWrap = ({ data }) => {
 
                     <div className={s.wrapper}>
                         {data?.map((el) => (
-                            <Link href={`/category/${el?.id}`} className={s.card} key={el?.id}>
+                            <Link href={`/category/${el?.id}?category_name=${el?.name}`} className={s.card} key={el?.id}>
                                 <img src={el?.icon} alt={el?.name} />
                                 <h3>{el?.name}</h3>
                                 <p>{el?.description}</p>

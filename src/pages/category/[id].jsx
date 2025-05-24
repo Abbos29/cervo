@@ -1,13 +1,23 @@
 import CategoryWrap from '@/components/layout/CategoryWrap/CategoryWrap'
 import HeadSeo from '@/components/ui/HeadSeo/HeadSeo'
 import { axiosInstance } from '@/utils/axios'
+import { useRouter } from 'next/router'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { useIsClient } from 'usehooks-ts'
 
 const CategoryPage = ({ data }) => {
+    const { t } = useTranslation()
+    const isClient = useIsClient()
+    const router = useRouter()
+    
     return (
         <>
-            <HeadSeo title={"Главная страница"} description={"Описание"} />
-            <CategoryWrap data={data} />
+            {isClient && <>
+                <HeadSeo title={router.query.category_name} />
+                <CategoryWrap data={data} category_name={router.query.category_name} />
+
+            </>}
         </>
     )
 }

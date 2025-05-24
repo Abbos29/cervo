@@ -5,7 +5,7 @@ export const nav_links = [
     },
     {
         title: "nav.link2",
-        href: '/products',
+        href: '/category',
     },
     {
         title: "nav.link3",

@@ -1,15 +1,19 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
+import { useIsClient } from 'usehooks-ts';
 
 const HeadSeo = ({ title, description }) => {
+    const { t } = useTranslation()
     const router = useRouter();
+    const isClient = useIsClient()
     const siteName = 'Cervo';
     const domain = 'https://cervo.uz';
 
     // Дефолтные значения, если пропсы не переданы
     const defaultTitle = 'Интернет';
-    const defaultDescription = 'Интернет';
+    const defaultDescription = t("seo.desc");
 
     // Используем переданные значения или дефолтные
     const pageTitle = title || defaultTitle;
@@ -31,7 +35,7 @@ const HeadSeo = ({ title, description }) => {
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
             <title>{fullTitle}</title>
             <meta name="description" content={pageDescription} />
-            <meta name="keywords" content="интернет-магазин, одежда, обувь, аксессуары, Cervo, купить онлайн" />
+            {isClient && <meta name="keywords" content={t("seo.keyword")} />}
 
             {/* Канонический URL */}
             <link rel="canonical" href={canonical} />
