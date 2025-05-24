@@ -8,7 +8,7 @@ const ProductPage = ({ data }) => {
     return (
         <>
             <HeadSeo title={`${data?.name}`} description={`${data?.description}`} />
-            <ProductWrap data={data} />
+            <ProductwWrap data={data} />
         </>
     )
 }

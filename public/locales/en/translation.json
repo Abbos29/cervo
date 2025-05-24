@@ -89,5 +89,17 @@
         "title": "Battery, Tire & Wheel Solutions Delivering the Quality and Style Your Vehicle Deserves",
         "description": "From premium tires to custom wheels and reliable batteries, we’re here to elevate your driving experience anytime, anywhere."
     },
+<<<<<<< HEAD
     "not_found": "Not found..."
+=======
+    "not_found": "Not found...",
+    "seo": {
+        "desc": "Cervo Global offers a wide range of car batteries, wheels, and tires. We work with global distributors and provide high-quality certified products, fast delivery, and 24/7 customer support.",
+        "keyword": "car batteries, wheels, tires, auto parts, wholesale, Cervo Global, international delivery, car accessories, automotive, distributors, customer support"
+    },
+    "pages": {
+        "main": "Home page",
+        "products": "Products"
+    }
+>>>>>>> a5e275fa0a26ce02c51a75bd64f4671ab0228a75
 }
