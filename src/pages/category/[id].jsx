@@ -6,7 +6,7 @@ import React from 'react'
 const CategoryPage = ({ data }) => {
     return (
         <>
-            <HeadSeo title={"Главная страница"} description={"Описание"} />
+            <HeadSeo title={"Главная страница"} />
             <CategoryWrap data={data} />
         </>
     )
