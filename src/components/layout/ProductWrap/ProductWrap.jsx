@@ -30,7 +30,7 @@ const ProductWrap = ({ data }) => {
         <>
             <section className={s.productWrap}>
                 <Container>
-                    <Breadcrumbs />
+                    <Breadcrumbs lastTitle={data?.name} />
                     <div className={s.wrapper}>
                         <div className={s.gallery}>
                             <div className={s.gallery_images}>
