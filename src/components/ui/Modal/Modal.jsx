@@ -2,24 +2,22 @@ import React, { useEffect } from 'react';
 import s from './Modal.module.scss';
 import Button from '../Button/Button';
 import { useModalStore } from '@/stores/useModalStore';
+import { useTranslation } from 'react-i18next';
+import { useIsClient } from 'usehooks-ts';
 
 const Modal = () => {
     const { isOpen, closeModal } = useModalStore();
+    const { t } = useTranslation();
+    const isClient = useIsClient()
 
-    // Управляем overflow body при открытии/закрытии модалки
     useEffect(() => {
         if (isOpen) {
-            // Запоминаем текущее значение overflow
             const originalOverflow = document.body.style.overflow;
-            // Блокируем скролл
             document.body.style.overflow = 'hidden';
-
-            // Очищаем при размонтировании или закрытии
             return () => {
                 document.body.style.overflow = originalOverflow;
             };
         } else {
-            // Если модалка закрыта, возвращаем обычный скролл
             document.body.style.overflow = '';
         }
     }, [isOpen]);
@@ -40,76 +38,70 @@ const Modal = () => {
 
     return (
         <div className={s.overlay} onClick={handleOverlayClick}>
-            <div className={s.modal}>
-                <button
-                    className={s.closeBtn}
-                    onClick={closeModal}
-                    type="button"
-                >
-                    ×
-                </button>
+            {isClient && <div className={s.modal}>
+                <button className={s.closeBtn} onClick={closeModal} type="button">×</button>
 
                 <form className={s.form} onSubmit={handleSubmit}>
                     <div className={s.top}>
-                        <h2 className={s.title}>Application</h2>
+                        <h2 className={s.title}>{t('modal.title')}</h2>
                         <img src="/img/logo.png" alt="logo" />
                     </div>
 
                     <div className={s.row}>
                         <div className={s.inputGroup}>
-                            <label>Last Name<span>*</span></label>
-                            <input type="text" placeholder="Enter last name" required />
+                            <label>{t('modal.labels.lastName')}<span>*</span></label>
+                            <input type="text" placeholder={t('modal.placeholders.lastName')} required />
                         </div>
                         <div className={s.inputGroup}>
-                            <label>First Name<span>*</span></label>
-                            <input type="text" placeholder="Enter first name" required />
+                            <label>{t('modal.labels.firstName')}<span>*</span></label>
+                            <input type="text" placeholder={t('modal.placeholders.firstName')} required />
                         </div>
                         <div className={s.inputGroup}>
-                            <label>Middle Name<span>*</span></label>
-                            <input type="text" placeholder="Enter middle name" required />
-                        </div>
-                    </div>
-
-                    <div className={s.row}>
-                        <div className={s.inputGroup}>
-                            <label>City<span>*</span></label>
-                            <input type="text" placeholder="Enter city" required />
-                        </div>
-                        <div className={s.inputGroup}>
-                            <label>State<span>*</span></label>
-                            <input type="text" placeholder="Enter state" required />
-                        </div>
-                        <div className={s.inputGroup}>
-                            <label>Address<span>*</span></label>
-                            <input type="text" placeholder="Enter address" required />
+                            <label>{t('modal.labels.middleName')}<span>*</span></label>
+                            <input type="text" placeholder={t('modal.placeholders.middleName')} required />
                         </div>
                     </div>
 
                     <div className={s.row}>
                         <div className={s.inputGroup}>
-                            <label>Company<span>*</span></label>
-                            <input type="text" placeholder="Enter company name" required />
+                            <label>{t('modal.labels.city')}<span>*</span></label>
+                            <input type="text" placeholder={t('modal.placeholders.city')} required />
                         </div>
                         <div className={s.inputGroup}>
-                            <label>Phone Number<span>*</span></label>
-                            <input type="tel" placeholder="Enter your phone number" required />
+                            <label>{t('modal.labels.state')}<span>*</span></label>
+                            <input type="text" placeholder={t('modal.placeholders.state')} required />
                         </div>
                         <div className={s.inputGroup}>
-                            <label>Email Address</label>
-                            <input type="email" placeholder="pat@shuffle.dev" />
+                            <label>{t('modal.labels.address')}<span>*</span></label>
+                            <input type="text" placeholder={t('modal.placeholders.address')} required />
+                        </div>
+                    </div>
+
+                    <div className={s.row}>
+                        <div className={s.inputGroup}>
+                            <label>{t('modal.labels.company')}<span>*</span></label>
+                            <input type="text" placeholder={t('modal.placeholders.company')} required />
+                        </div>
+                        <div className={s.inputGroup}>
+                            <label>{t('modal.labels.phone')}<span>*</span></label>
+                            <input type="tel" placeholder={t('modal.placeholders.phone')} required />
+                        </div>
+                        <div className={s.inputGroup}>
+                            <label>{t('modal.labels.email')}</label>
+                            <input type="email" placeholder={t('modal.placeholders.email')} />
                         </div>
                     </div>
 
                     <div className={s.inputGroup}>
-                        <label>Comments</label>
-                        <textarea placeholder="Lorem ipsum dolor..." rows={4}></textarea>
+                        <label>{t('modal.labels.comments')}</label>
+                        <textarea placeholder={t('modal.placeholders.comments')} rows={4}></textarea>
                     </div>
 
                     <div className={s.actions}>
-                        <Button apply type="submit">Apply</Button>
+                        <Button apply type="submit">{t('modal.submit')}</Button>
                     </div>
                 </form>
-            </div>
+            </div>}
         </div>
     );
 };

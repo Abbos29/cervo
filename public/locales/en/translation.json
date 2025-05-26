@@ -97,5 +97,33 @@
     "pages": {
         "main": "Home page",
         "products": "Products"
+    },
+    "modal": {
+        "title": "Application",
+        "labels": {
+            "lastName": "Last Name",
+            "firstName": "First Name",
+            "middleName": "Middle Name",
+            "city": "City",
+            "state": "State",
+            "address": "Address",
+            "company": "Company",
+            "phone": "Phone Number",
+            "email": "Email Address",
+            "comments": "Comments"
+        },
+        "placeholders": {
+            "lastName": "Enter last name",
+            "firstName": "Enter first name",
+            "middleName": "Enter middle name",
+            "city": "Enter city",
+            "state": "Enter state",
+            "address": "Enter address",
+            "company": "Enter company name",
+            "phone": "Enter your phone number",
+            "email": "pat@shuffle.dev",
+            "comments": "Lorem ipsum dolor..."
+        },
+        "submit": "Apply"
     }
 }
