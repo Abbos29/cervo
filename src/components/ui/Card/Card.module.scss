@@ -19,7 +19,7 @@
         color: #fff;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
-        padding: 20px 40px;
+        padding: 20px 30px;
 
         p {
             font-size: clamp(1rem, 0.853rem + 0.65vw, 1.375rem);
@@ -27,10 +27,16 @@
             padding-bottom: 6px;
         }
 
-        h6 {
-            text-transform: uppercase;
-            font-size: 12px;
-            font-weight: 800;
+        span {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+
+            h6 {
+                text-transform: uppercase;
+                font-size: 12px;
+                font-weight: 800;
+            }
         }
     }
 }
