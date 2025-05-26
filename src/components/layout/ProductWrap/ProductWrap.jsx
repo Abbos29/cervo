@@ -35,17 +35,17 @@ const ProductWrap = ({ data }) => {
                         <div className={s.gallery}>
                             <div className={s.gallery_images}>
                                 {data?.images?.map((el, i) => (
-                                    <img className={i === active ? s.active : ''} onClick={() => setActive(i)} src={`https://cervo.pythonanywhere.com/${el}`} alt={i} key={i} />
+                                    <img className={i === active ? s.active : ''} onClick={() => setActive(i)} src={el} alt={i} key={i} />
                                 ))}
                             </div>
 
-                            <img className={s.gallery_main_image} src={`https://cervo.pythonanywhere.com/${data?.images[active]}`} alt="image" />
+                            <img className={s.gallery_main_image} src={data?.images[active]} alt="image" />
                         </div>
 
                         <div className={s.content}>
                             <div className={s.top}>
                                 <h1>{data?.name}</h1>
-                                <h2>Eurolux</h2>
+                                <h2>{data?.category}</h2>
                             </div>
 
                             <h3>{data?.sub_title}</h3>

@@ -3,25 +3,32 @@ import s from './CategoryWrap.module.scss'
 import Container from '@/components/ui/Container/Container'
 import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { useIsClient } from 'usehooks-ts'
-import { useTranslation } from 'react-i18next'
 import Card from '@/components/ui/Card/Card'
+import NotFound from '@/components/ui/NotFound/NotFound'
 
-const CategoryWrap = ({ data, category_name }) => {
+const CategoryWrap = ({ data, category_name, materials, selectedMaterialID, setSelectedMaterialID }) => {
     const isClient = useIsClient()
-    const { t } = useTranslation()
 
     return (
         <>
             {isClient && <section>
-                {data?.length ? (
-                    <Container>
-                        <div className={s.title_wrap}>
-                            <Breadcrumbs lastTitle={category_name} />
-                            <span>
-                                <button className={s.active}>Aluminum</button>
-                                <button className={s.btn}>Forged</button>
-                            </span>
-                        </div>
+                <Container>
+                    <div className={s.title_wrap}>
+                        <Breadcrumbs lastTitle={category_name} />
+                        <span>
+                            {materials && materials?.map((material) => (
+                                <button
+                                    key={material?.id}
+                                    className={`${s.btn} ${selectedMaterialID === material?.id ? s.active : ''
+                                        }`}
+                                    onClick={() => setSelectedMaterialID(material?.id)}
+                                >
+                                    {material?.name}
+                                </button>
+                            ))}
+                        </span>
+                    </div>
+                    {data?.length ? (
                         <div className={s.products_wrapper}>
                             {data?.map((el) => {
                                 return (
@@ -31,12 +38,10 @@ const CategoryWrap = ({ data, category_name }) => {
                                 )
                             })}
                         </div>
-                    </Container>
-                ) : (
-                    <div className={s.empty_wrap}>
-                        <h2>{t("not_found")}</h2>
-                    </div>
-                )}
+                    ) : (
+                        <NotFound />
+                    )}
+                </Container>
             </section>}
         </>
     )
