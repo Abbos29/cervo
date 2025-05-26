@@ -8,7 +8,12 @@ const Card = ({ image, name, sizes, id }) => {
             <img src={image} alt={name} />
             <div className={s.card_body}>
                 <p>{name}</p>
-                <h6>{sizes && sizes?.map((size) => size)}</h6>
+                <span>
+                    <h6>R17,</h6>
+                    <h6>R18,</h6>
+                    <h6>R19,</h6>
+                    <h6>R20</h6>
+                </span>
             </div>
         </Link>
     )
