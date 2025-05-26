@@ -91,5 +91,33 @@
     "pages": {
         "main": "الصفحة الرئيسية",
         "products": "المنتجات"
+    },
+    "modal": {
+        "title": "طلب",
+        "labels": {
+            "lastName": "الكنية",
+            "firstName": "الاسم الأول",
+            "middleName": "الاسم الأوسط",
+            "city": "المدينة",
+            "state": "الولاية",
+            "address": "العنوان",
+            "company": "الشركة",
+            "phone": "رقم الهاتف",
+            "email": "البريد الإلكتروني",
+            "comments": "التعليقات"
+        },
+        "placeholders": {
+            "lastName": "أدخل الكنية",
+            "firstName": "أدخل الاسم الأول",
+            "middleName": "أدخل الاسم الأوسط",
+            "city": "أدخل المدينة",
+            "state": "أدخل الولاية",
+            "address": "أدخل العنوان",
+            "company": "أدخل اسم الشركة",
+            "phone": "أدخل رقم الهاتف",
+            "email": "pat@shuffle.dev",
+            "comments": "Lorem ipsum dolor..."
+        },
+        "submit": "تقديم"
     }
 }
