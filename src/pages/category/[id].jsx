@@ -13,16 +13,11 @@ const CategoryPage = ({ data }) => {
     
     return (
         <>
-<<<<<<< HEAD
-            <HeadSeo title={"Главная страница"} />
-            <CategoryWrap data={data} />
-=======
             {isClient && <>
                 <HeadSeo title={router.query.category_name} />
                 <CategoryWrap data={data} category_name={router.query.category_name} />
 
             </>}
->>>>>>> a5e275fa0a26ce02c51a75bd64f4671ab0228a75
         </>
     )
 }

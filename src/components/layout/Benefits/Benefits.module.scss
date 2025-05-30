@@ -1,40 +1,55 @@
 .benefits {
-    background: #121212;
+    // background: #121212;
     color: #fff;
     padding: 200px 0;
     position: relative;
+
+    background-image: url(/img/benefits-bg-2.png);
+    background-repeat: repeat-x;
+    
+    background-size: contain;
+    background-position: center;
+
+    min-height: 900px;
+    
+    @media (max-width: 1600px) {
+    background: #121212;
+    padding: 100px 0;
+    background-image: none;
+      
+    }
 
     @media (max-width: 768px) {
         padding: 100px 0;
     }
 
-    &::after,
-    &::before {
-        content: "";
-        width: 100%;
-        position: absolute;
-        z-index: 2;
-        height: 120px;
-        background-repeat: no-repeat;
-        background-size: 100%;
-    }
+    // &::after,
+    // &::before {
+    //     content: "";
+    //     width: 100%;
+    //     position: absolute;
+    //     z-index: 2;
+    //     height: 120px;
+    //     background-repeat: no-repeat;
+    //     background-size: 100%;
+    // }
 
-    &::after {
-        bottom: -2px;
-        left: 0;
-        height: 140px;
-        background-image: url(/img/hero-after-wave.svg);
-        background-position: center bottom;
-    }
+    // &::after {
+    //     bottom: -2px;
+    //     left: 0;
+    //     height: 140px;
+    //     background-image: url(/img/hero-after-wave.svg);
+    //     background-position: center bottom;
+    // }
 
-    &::before {
-        rotate: 180deg;
-        top: -2px;
-        left: 0;
-        height: 140px;
-        background-image: url(/img/hero-after-wave.svg);
-        background-position: center bottom;
-    }
+    // &::before {
+    //     rotate: 180deg;
+    //     top: -2px;
+    //     left: 0;
+    //     height: 140px;
+    //     background-image: url(/img/hero-after-wave.svg);
+    //     background-position: center bottom;
+    // }
 }
 
 .top {
@@ -82,7 +97,7 @@
     text-align: center;
 
     @media (max-width: 480px) {
-      gap: 15px;
+        gap: 15px;
     }
 
     img {

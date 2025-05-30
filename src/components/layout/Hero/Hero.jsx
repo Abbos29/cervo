@@ -10,6 +10,7 @@ const Hero = () => {
                     <div className={s.poster}>
                         <img src="/img/logo.png" alt="poster" />
                     </div>
+
                 </Container>
             </section>
         </>

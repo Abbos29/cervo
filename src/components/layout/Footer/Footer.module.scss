@@ -2,6 +2,10 @@
     background-color: #121212;
     padding: 70px 0;
     color: #f9f7f7;
+
+    @media (max-width: 480px) {
+      padding: 35px 0;
+    }
 }
 
 .wrapper {
@@ -18,8 +22,11 @@
 
     @media (max-width: 480px) {
         flex-direction: column;
-        align-items: flex-start;
-        padding-left: 30px;
+        align-items: center;
+        text-align: center;
+        // padding-left: 30px;
+        padding-bottom: 25px;
+        gap: 30px;
     }
 }
 
@@ -40,6 +47,7 @@
 
     @media (max-width: 480px) {
         flex-direction: column;
+        gap: 25px;
     }
 
     a {
@@ -55,7 +63,8 @@
     padding-top: 50px;
 
     @media (max-width: 480px) {
-        padding-left: 30px;
+        // padding-left: 30px;
+        padding-top: 25px;
     }
 
     p {
@@ -64,7 +73,10 @@
         line-height: 1.1;
 
         @media (max-width: 480px) {
-            font-size: 14px;
+            font-size: 12px;
+            opacity: 0.8;
+            text-align: center;
+            
         }
     }
 }
