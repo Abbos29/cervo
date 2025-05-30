@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { useIsClient } from 'usehooks-ts'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
+import NotFound from '@/components/ui/NotFound/NotFound'
 
 const ProductsWrap = ({ data }) => {
     const isClient = useIsClient()
@@ -15,15 +16,19 @@ const ProductsWrap = ({ data }) => {
                 <Container>
                     <Breadcrumbs />
 
-                    <div className={s.wrapper}>
-                        {data?.map((el) => (
-                            <Link href={`/category/${el?.id}?category_name=${el?.name}`} className={s.card} key={el?.id}>
-                                <img src={el?.icon} alt={el?.name} />
-                                <h3>{el?.name}</h3>
-                                <p>{el?.description}</p>
-                            </Link>
-                        ))}
-                    </div>
+                    {data?.length ? (
+                        <div className={s.wrapper}>
+                            {data?.map((el) => (
+                                <Link href={`/category/${el?.id}?category_name=${el?.name}`} className={s.card} key={el?.id}>
+                                    <img src={el?.icon} alt={el?.name} />
+                                    <h3>{el?.name}</h3>
+                                    <p>{el?.description}</p>
+                                </Link>
+                            ))}
+                        </div>
+                    ) : (
+                        <NotFound />
+                    )}
 
                     <div className={s.inner}>
                         <h2>{t("products.title")}</h2>

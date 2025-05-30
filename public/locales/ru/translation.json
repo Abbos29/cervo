@@ -91,5 +91,33 @@
     "pages": {
         "main": "Главная страница",
         "products": "Продукты"
+    },
+    "modal": {
+        "title": "Заявка",
+        "labels": {
+            "lastName": "Фамилия",
+            "firstName": "Имя",
+            "middleName": "Отчество",
+            "city": "Город",
+            "state": "Штат",
+            "address": "Адрес",
+            "company": "Компания",
+            "phone": "Номер телефона",
+            "email": "Электронная почта",
+            "comments": "Комментарии"
+        },
+        "placeholders": {
+            "lastName": "Введите фамилию",
+            "firstName": "Введите имя",
+            "middleName": "Введите отчество",
+            "city": "Введите город",
+            "state": "Введите штат",
+            "address": "Введите адрес",
+            "company": "Введите название компании",
+            "phone": "Введите номер телефона",
+            "email": "pat@shuffle.dev",
+            "comments": "Lorem ipsum dolor..."
+        },
+        "submit": "Подать заявку"
     }
 }
