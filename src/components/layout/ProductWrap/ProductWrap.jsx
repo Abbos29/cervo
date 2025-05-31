@@ -2,17 +2,23 @@ import React, { useState } from 'react'
 import s from './ProductWrap.module.scss'
 import Container from '@/components/ui/Container/Container'
 import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs';
+import { useTranslation } from 'react-i18next';
+import { useIsClient } from 'usehooks-ts';
 
 const ProductWrap = ({ data }) => {
     const [active, setActive] = useState(0)
+    const [focusedSize, setFocusedSize] = useState(0)
+    const { t } = useTranslation()
+    const isClient = useIsClient()
 
     const characteristics = [
-        { name: 'Dry', rating: data?.dry },
-        { name: 'Wet', rating: data?.wet },
-        { name: 'Snow', rating: data?.snow },
-        { name: 'Noise', rating: data?.noise },
-        { name: 'Treadwear', rating: data?.tread_wear }
+        { name: t('characteristics.dry'), rating: data?.dry },
+        { name: t('characteristics.wet'), rating: data?.wet },
+        { name: t('characteristics.snow'), rating: data?.snow },
+        { name: t('characteristics.noise'), rating: data?.noise },
+        { name: t('characteristics.treadwear'), rating: data?.tread_wear }
     ];
+
 
     const renderRatingFields = (rating) => {
         const maxFields = 5;
@@ -39,7 +45,7 @@ const ProductWrap = ({ data }) => {
                                 ))}
                             </div>
 
-                            <img className={s.gallery_main_image} src={`https://cervo.pythonanywhere.com/${data?.images[active]}`} alt="image" />
+                            <img className={s.gallery_main_image} src={data?.images[active]} alt="image" />
                         </div>
 
                         <div className={s.content}>
@@ -56,12 +62,17 @@ const ProductWrap = ({ data }) => {
 
                             <div className={s.sizes}>
                                 {data?.sizes?.map((size, i) => (
-                                    <div key={i}>{size}</div>
+                                    <div
+                                        key={i}
+                                        className={`${s.size} ${focusedSize === i ? s.active_size : ''}`}
+                                        onClick={() => setFocusedSize(i)}
+                                    >
+                                        {size}
+                                    </div>
                                 ))}
                             </div>
-
                             <div className={s.table}>
-                                {characteristics.map((characteristic, index) => (
+                                {isClient && characteristics.map((characteristic, index) => (
                                     <div key={index} className={s.table_row}>
                                         <b>{characteristic.name}</b>
 

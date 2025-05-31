@@ -125,5 +125,13 @@
             "comments": "Lorem ipsum dolor..."
         },
         "submit": "Apply"
-    }
+    },
+    "characteristics": {
+        "dry": "Dry",
+        "wet": "Wet",
+        "snow": "Snow",
+        "noise": "Noise",
+        "treadwear": "Treadwear"
+    },
+    "our_wheels": "Our other wheels:"
 }

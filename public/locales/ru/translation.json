@@ -119,5 +119,13 @@
             "comments": "Lorem ipsum dolor..."
         },
         "submit": "Подать заявку"
-    }
+    },
+    "characteristics": {
+        "dry": "Сухо",
+        "wet": "Мокро",
+        "snow": "Снег",
+        "noise": "Шум",
+        "treadwear": "Износ"
+    },
+    "our_wheels": "Наши другие колёса:"
 }
