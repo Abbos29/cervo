@@ -12,30 +12,44 @@ const ProductsWrap = ({ data }) => {
     const { t } = useTranslation()
     return (
         <>
-            {isClient && <section className={s.productsWrap}>
-                <Container>
-                    <Breadcrumbs />
+            {isClient && (
+                <section className={s.productsWrap}>
+                    <Container>
+                        <Breadcrumbs />
 
-                    {data?.length ? (
-                        <div className={s.wrapper}>
-                            {data?.map((el) => (
-                                <Link href={`/category/${el?.id}?category_name=${el?.name}`} className={s.card} key={el?.id}>
-                                    <img src={el?.icon} alt={el?.name} />
-                                    <h3>{el?.name}</h3>
-                                    <p>{el?.description}</p>
-                                </Link>
-                            ))}
+                        {data && data.length ? (
+                            <div className={s.wrapper}>
+                                {data.map((el) => {
+                                    let href = '#'
+
+                                    if (el.name === 'Wheels') {
+                                        href = `/category/${el.id}?category_name=${encodeURIComponent(el.name)}`
+                                    } else if (el.name === 'Tires') {
+                                        href = '/product/1'
+                                    } else if (el.name === 'Batteries') {
+                                        href = '/batteries'
+                                    }
+
+                                    return (
+                                        <Link key={el.id} href={href} className={s.card}>
+                                            {el.icon && <img src={el.icon} alt={el.name} />}
+                                            <h3>{el.name}</h3>
+                                            {el.description && <p>{el.description}</p>}
+                                        </Link>
+                                    )
+                                })}
+                            </div>
+                        ) : (
+                            <NotFound />
+                        )}
+
+                        <div className={s.inner}>
+                            <h2>{t('products.title')}</h2>
+                            <p>{t('products.description')}</p>
                         </div>
-                    ) : (
-                        <NotFound />
-                    )}
-
-                    <div className={s.inner}>
-                        <h2>{t("products.title")}</h2>
-                        <p>{t("products.description")}</p>
-                    </div>
-                </Container>
-            </section>}
+                    </Container>
+                </section>
+            )}
         </>
     )
 }

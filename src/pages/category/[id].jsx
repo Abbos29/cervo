@@ -40,11 +40,6 @@ const CategoryPage = ({ materials }) => {
                     />
                 </>
             )}
-            {isClient && <>
-                <HeadSeo title={router.query.category_name} />
-                <CategoryWrap data={data} category_name={router.query.category_name} />
-
-            </>}
         </>
     )
 }

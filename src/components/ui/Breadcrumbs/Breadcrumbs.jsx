@@ -5,21 +5,33 @@ import s from './Breadcrumbs.module.scss'
 
 const Breadcrumbs = ({ lastTitle }) => {
     const router = useRouter()
-    const pathParts = router.pathname.split('/').filter(Boolean)
+
+    const pathParts = router.asPath.split('?')[0].split('/').filter(Boolean)
 
     const breadcrumbs = pathParts.map((part, index) => {
-        const href = '/' + pathParts.slice(0, index + 1).join('/')
+        const originalPart = part
+        const isProduct = part === 'product'
+        const partForHref = isProduct ? 'category' : part
+
+        const href = '/' + pathParts
+            .slice(0, index + 1)
+            .map((p, i) => (i === index && isProduct ? 'category' : p))
+            .join('/')
+
         const isLast = index === pathParts.length - 1
 
-        const name = isLast && lastTitle
-            ? lastTitle
-            : decodeURIComponent(part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()))
+        const name =
+            isLast && lastTitle
+                ? lastTitle
+                : isProduct
+                    ? 'Category'
+                    : decodeURIComponent(part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()))
 
         return (
             <React.Fragment key={href}>
                 <span className={s.separator}>/</span>
                 {isLast && lastTitle ? (
-                    <Link href={'#'} className={s.link}>{name}</Link>
+                    <Link href="#" className={s.link}>{name}</Link>
                 ) : (
                     <Link href={href} className={s.link}>
                         {name}
