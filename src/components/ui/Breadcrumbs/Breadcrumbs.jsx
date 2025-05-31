@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import s from './Breadcrumbs.module.scss'
 
-const Breadcrumbs = ({ lastTitle }) => {
+const Breadcrumbs = ({ lastTitle, white = false }) => {
     const router = useRouter()
 
     const pathParts = router.asPath.split('?')[0].split('/').filter(Boolean)
@@ -29,11 +29,11 @@ const Breadcrumbs = ({ lastTitle }) => {
 
         return (
             <React.Fragment key={href}>
-                <span className={s.separator}>/</span>
+                <span className={`${s.separator} ${white ? s.whiteText : ''}`}>/</span>
                 {isLast && lastTitle ? (
-                    <Link href="#" className={s.link}>{name}</Link>
+                    <Link href="#" className={`${s.link} ${white ? s.whiteText : ''}`}>{name}</Link>
                 ) : (
-                    <Link href={href} className={s.link}>
+                    <Link href={href} className={`${s.link} ${white ? s.whiteText : ''}`}>
                         {name}
                     </Link>
                 )}
@@ -51,9 +51,9 @@ const Breadcrumbs = ({ lastTitle }) => {
 
     return (
         <nav className={s.breadcrumbs}>
-            <h3>{pageTitle}</h3>
+            <h3 className={white ? s.whiteText : ''}>{pageTitle}</h3>
             <div>
-                <Link href="/" className={s.link}>Home</Link>
+                <Link href="/" className={`${s.link} ${white ? s.whiteText : ''}`}>Home</Link>
                 {breadcrumbs}
             </div>
         </nav>

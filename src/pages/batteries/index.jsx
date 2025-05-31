@@ -1,8 +1,11 @@
+import BatteriesWrap from '@/components/layout/BatteriesWrap/BatteriesWrap'
 import React from 'react'
 
 const Batteries = () => {
     return (
-        <div>Batteries</div>
+        <>
+            <BatteriesWrap />
+        </>
     )
 }
 

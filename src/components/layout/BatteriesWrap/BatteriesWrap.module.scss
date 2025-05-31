@@ -1,0 +1,78 @@
+.batteriesWrap {
+    position: relative;
+}
+
+.main_bg {
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    z-index: -1;
+
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.slider {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.slide_image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+
+    filter: drop-shadow(0 0 10px white);
+}
+
+.wrap {
+}
+
+.wrap_top {
+    display: flex;
+    justify-content: space-between;
+
+    > div {
+
+        h5 {
+            color: #b8b8b8;
+            font-size: 32px;
+            font-weight: 500;
+        }
+        h2 {
+            font-weight: 700;
+            font-size: 48px;
+        }
+    }
+}
+
+
+.wrap_info {
+    display: flex;
+    gap: 35px;
+
+}
+
+.wrap_info_card {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+
+    flex-direction: column;
+
+    p {
+        font-size: 20px;
+        color: #8B8B8B;
+    }
+    b {
+        font-size: 24px;
+    }
+}

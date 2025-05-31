@@ -19,3 +19,27 @@ body {
         }
     }
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+    &::after {
+        content: "";
+        height: 100px;
+        width: 42px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        font-size: 0 !important;
+    }
+}
+
+.swiper-button-prev {
+    &::after {
+        background-image: url(/img/swiper-arrow-left.svg) !important;
+    }
+}
+.swiper-button-next {
+    &::after {
+        background-image: url(/img/swiper-arrow-right.svg) !important;
+    }
+}

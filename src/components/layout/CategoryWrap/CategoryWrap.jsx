@@ -5,7 +5,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { useIsClient } from 'usehooks-ts'
 import Card from '@/components/ui/Card/Card'
 import NotFound from '@/components/ui/NotFound/NotFound'
-import Loader from '@/components/ui/Loader/Loader' // 👈 yangi loader
+import Loader from '@/components/ui/Loader/Loader' 
 
 const CategoryWrap = ({
     data,
