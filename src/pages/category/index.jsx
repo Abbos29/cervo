@@ -22,7 +22,8 @@ const ProductsPage = ({ data }) => {
                 <>
                     <HeadSeo title={t("pages.products")} />
                     <ProductsWrap data={data} />
-                </>}
+                </>
+            }
         </>
     )
 }
