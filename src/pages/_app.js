@@ -14,7 +14,6 @@ export default function App({ Component, pageProps }) {
       <Feedback />
       <Footer />
 
-      {/* Модалка теперь рендерится условно внутри себя */}
       <Modal />
     </>
   );

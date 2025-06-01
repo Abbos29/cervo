@@ -12,7 +12,7 @@ const HeadSeo = ({ title, description }) => {
     const domain = 'https://cervo.uz';
 
     // Дефолтные значения, если пропсы не переданы
-    const defaultTitle = 'Интернет';
+    const defaultTitle = 'Mainpage';
     const defaultDescription = t("seo.desc");
 
     // Используем переданные значения или дефолтные
