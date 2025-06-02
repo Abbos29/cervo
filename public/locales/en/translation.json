@@ -133,5 +133,6 @@
         "noise": "Noise",
         "treadwear": "Treadwear"
     },
-    "our_wheels": "Our other wheels:"
+    "our_wheels": "Our other wheels:",
+    "map":"Map"
 }
