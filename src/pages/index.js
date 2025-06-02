@@ -18,7 +18,8 @@ const Home = () => {
         <Numbers />
         <Benefits />
         <ContactsWrap />
-      </>}
+      </>
+      }
     </>
   )
 }
