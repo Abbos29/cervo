@@ -12,7 +12,7 @@ const AboutUs = () => {
     <>
       {isClient && <>
         <HeadSeo title={t("nav.link4")} />
-        <AboutHero isMap={false} />
+        <AboutHero />
         <ContactsWrap />
       </>}
     </>
