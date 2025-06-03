@@ -2,22 +2,37 @@ import React from 'react'
 import s from './AboutHero.module.scss'
 import Container from '@/components/ui/Container/Container'
 import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
-import { useTranslation } from 'react-i18next'
 
-const AboutHero = ({ isMap }) => {
-    const { t } = useTranslation()
+const AboutHero = () => {
     return (
-        <section>
-            <Container>
-                <div className={s.about_title}>
-                    <Breadcrumbs />
-                    {isMap && <button className={s.map}>{t("map")}</button>}
-                </div>
-                <div className={s.about_hero}>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4048.945177386761!2d69.24517260747297!3d41.31602200802469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b40d847941d%3A0x5765a18b352df71e!2sTashkent%20City%20Park!5e0!3m2!1sru!2s!4v1748852403066!5m2!1sru!2s" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </Container>
-        </section>
+        <>
+            <section className={s.contacts_hero}>
+                <Container>
+                    <div className={s.cotacts_title}>
+                        <Breadcrumbs white />
+                        <button className={s.btn}>About us</button>
+                    </div>
+                    <div className={s.title}>
+                        <h1><span>ABOUT</span></h1>
+                        <h2><span>CERVO</span> GLOBAL</h2>
+                        <p>The Professional Choice for Your Fleet</p>
+                    </div>
+                </Container>
+            </section>
+            <section className={s.content}>
+                <Container>
+                    <div className={s.content_box}>
+                        <div>
+                            <h4>2025</h4>
+                            <h3>Short Description about Cervo:</h3>
+                        </div>
+                        <p><span>Cervo</span> is a brand with over 22 years of experience in the automotive industry. In 2023, we launched the Cervo trademark to unify our expertise under one name and offer customers a trusted source for high-quality wheels, tires, and batteries. In 2024, our brand and logo were officially patented internationally, confirming our commitment to quality and global standards.
+                        </p>
+                        <p>In 2025, we went online to make our products more accessible — and now, Cervo is actively seeking international partners for collaboration and global distribution of our products, including car batteries, wheels, and tires. Our goal is to enter new markets and build long-term partnerships around the world.</p>
+                    </div>
+                </Container>
+            </section>
+        </>
     )
 }
 
