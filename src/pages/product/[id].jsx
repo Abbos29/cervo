@@ -5,11 +5,12 @@ import { axiosInstance } from '@/utils/axios'
 import React from 'react'
 
 const ProductPage = ({ data, wheels }) => {
+    const isOurWheels = false;
     return (
         <>
             <HeadSeo title={`${data?.name}`} description={`${data?.description}`} />
             <ProductWrap data={data} />
-            <OtherWheels wheels={wheels} />
+            {isOurWheels && <OtherWheels wheels={wheels} />}
         </>
     )
 }
