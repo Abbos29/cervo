@@ -18,13 +18,6 @@ const OtherWheels = ({ wheels }) => {
           {wheels?.map((el) => (
             <>
               <Card key={el?.id} id={el?.id} image={el?.image} name={el?.name} sizes={el?.sizes} />
-              <Card key={el?.id} id={el?.id} image={el?.image} name={el?.name} sizes={el?.sizes} />
-              <Card key={el?.id} id={el?.id} image={el?.image} name={el?.name} sizes={el?.sizes} />
-              <Card key={el?.id} id={el?.id} image={el?.image} name={el?.name} sizes={el?.sizes} />
-              <Card key={el?.id} id={el?.id} image={el?.image} name={el?.name} sizes={el?.sizes} />
-              <Card key={el?.id} id={el?.id} image={el?.image} name={el?.name} sizes={el?.sizes} />
-              <Card key={el?.id} id={el?.id} image={el?.image} name={el?.name} sizes={el?.sizes} />
-              <Card key={el?.id} id={el?.id} image={el?.image} name={el?.name} sizes={el?.sizes} />
             </>
           ))}
         </div>
