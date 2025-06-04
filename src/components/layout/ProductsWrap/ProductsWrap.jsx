@@ -33,7 +33,7 @@ const ProductsWrap = ({ data }) => {
                                     return (
                                         <Link key={el.id} href={href} className={s.card}>
                                             {el.icon && <img src={el.icon} alt={el.name} />}
-                                            <h3>{el.name}</h3>
+                                            <h3>{el.name_ar}</h3>
                                             {el.description && <p>{el.description}</p>}
                                         </Link>
                                     )

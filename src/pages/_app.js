@@ -6,9 +6,16 @@ import Footer from "@/components/layout/Footer/Footer";
 import '../i18n'
 import Modal from "@/components/ui/Modal/Modal";
 
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
+
+
 export default function App({ Component, pageProps }) {
   return (
     <>
+      <SpeedInsights />
+      <Analytics />
+
       <Header />
       <Component {...pageProps} />
       <Feedback />
