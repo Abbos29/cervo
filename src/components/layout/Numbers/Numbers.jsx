@@ -7,26 +7,28 @@ import Container from '@/components/ui/Container/Container'
 import Pretitle from '@/components/ui/Pretitle/Pretitle'
 import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
 
-const Numbers = () => {
+const Numbers = ({ numbers }) => {
+    console.log(numbers);
+
     const { t } = useTranslation()
     const isClient = useIsClient()
     const [hasAnimated, setHasAnimated] = useState(false)
     const ref = useRef(null)
-    
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    console.log('Intersection ratio:', entry.intersectionRatio) 
+                    console.log('Intersection ratio:', entry.intersectionRatio)
                     if (entry.isIntersecting && !hasAnimated) {
-                        console.log('Starting animation!') 
+                        console.log('Starting animation!')
                         setHasAnimated(true)
                     }
                 })
             },
             {
-                threshold: 0.1, 
-                rootMargin: '100px 0px -50px 0px' 
+                threshold: 0.1,
+                rootMargin: '100px 0px -50px 0px'
             }
         )
 
@@ -90,7 +92,7 @@ const Numbers = () => {
                                                 start={0}
                                                 end={card.value}
                                                 duration={2.5}
-                                                delay={index * 0.2} 
+                                                delay={index * 0.2}
                                                 separator=" "
                                                 suffix={card.suffix}
                                                 useEasing={true}
