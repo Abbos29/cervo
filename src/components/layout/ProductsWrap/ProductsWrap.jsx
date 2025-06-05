@@ -7,9 +7,22 @@ import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import NotFound from '@/components/ui/NotFound/NotFound'
 
+const stripHtml = (html) => {
+    if (typeof window === 'undefined') return html;
+    const div = document.createElement('div')
+    div.innerHTML = html
+    return div.textContent || div.innerText || ''
+}
+
 const ProductsWrap = ({ data }) => {
     const isClient = useIsClient()
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
+
+    const getLocalizedField = (el, field) => {
+        const lang = i18n.language
+        return el[`${field}_${lang}`] || el[`${field}_en`] // fallback to English
+    }
+
     return (
         <>
             {isClient && (
@@ -22,19 +35,20 @@ const ProductsWrap = ({ data }) => {
                                 {data.map((el) => {
                                     let href = '#'
 
-                                    if (el.name === 'Wheels') {
-                                        href = `/category/${el.id}?category_name=${encodeURIComponent(el.name)}`
-                                    } else if (el.name === 'Tires') {
+                                    if (el.name_en === 'Wheels') {
+                                        href = `/category/${el.id}?category_name=${encodeURIComponent(el.name_en)}`
+                                    } else if (el.name_en === 'Tires') {
                                         href = '/product/1'
-                                    } else if (el.name === 'Batteries') {
+                                    } else if (el.name_en === 'Batteries') {
                                         href = '/batteries'
                                     }
-
+                                    const name = getLocalizedField(el, 'name')
+                                    const desc = stripHtml(getLocalizedField(el, 'description'))
                                     return (
                                         <Link key={el.id} href={href} className={s.card}>
-                                            {el.icon && <img src={el.icon} alt={el.name} />}
-                                            <h3>{el.name_ar}</h3>
-                                            {el.description && <p>{el.description}</p>}
+                                            {el.icon && <img src={el.icon} alt={name} />}
+                                            <h3>{name}</h3>
+                                            {desc && <p>{desc}</p>}
                                         </Link>
                                     )
                                 })}
