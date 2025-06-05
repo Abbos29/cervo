@@ -38,7 +38,7 @@ const ProductsWrap = ({ data }) => {
                                     if (el.name_en === 'Wheels') {
                                         href = `/category/${el.id}?category_name=${encodeURIComponent(el.name_en)}`
                                     } else if (el.name_en === 'Tires') {
-                                        href = '/product/1'
+                                        href = '/product/2'
                                     } else if (el.name_en === 'Batteries') {
                                         href = '/batteries'
                                     }
