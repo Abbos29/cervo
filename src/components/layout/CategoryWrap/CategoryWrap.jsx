@@ -5,7 +5,8 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { useIsClient } from 'usehooks-ts'
 import Card from '@/components/ui/Card/Card'
 import NotFound from '@/components/ui/NotFound/NotFound'
-import Loader from '@/components/ui/Loader/Loader' 
+import Loader from '@/components/ui/Loader/Loader'
+import { useTranslation } from 'react-i18next'
 
 const CategoryWrap = ({
     data,
@@ -17,6 +18,13 @@ const CategoryWrap = ({
     error
 }) => {
     const isClient = useIsClient()
+    const { i18n } = useTranslation()
+
+    const getLocalizedText = (item, key = 'name') => {
+        const lang = i18n.language
+        return item?.[`${key}_${lang}`] || item?.[`${key}_en`] // fallback to English
+    }
+
 
     return (
         <>
@@ -32,7 +40,7 @@ const CategoryWrap = ({
                                         className={`${s.btn} ${selectedMaterialID === material?.id ? s.active : ''}`}
                                         onClick={() => setSelectedMaterialID(material?.id)}
                                     >
-                                        {material?.name}
+                                        {getLocalizedText(material)}
                                     </button>
                                 ))}
                             </span>
@@ -49,7 +57,7 @@ const CategoryWrap = ({
                                         key={el?.id}
                                         id={el?.id}
                                         image={el?.image}
-                                        name={el?.name}
+                                        name={getLocalizedText(el)}
                                         sizes={el?.sizes}
                                     />
                                 ))}

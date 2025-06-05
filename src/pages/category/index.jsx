@@ -16,7 +16,6 @@ export const getServerSideProps = async () => {
 
 
 const ProductsPage = ({ data }) => {
-    console.log(data);
     const { t } = useTranslation()
     const isClient = useIsClient()
     return (
