@@ -8,7 +8,7 @@ const ProductPage = ({ data, wheels }) => {
     const isOurWheels = false;
     return (
         <>
-            <HeadSeo title={`${data?.name}`} description={`${data?.description}`} />
+            <HeadSeo title={`${data?.name_ar}`} description={`${data?.description_ar}`} />
             <ProductWrap data={data} />
             {isOurWheels && <OtherWheels wheels={wheels} />}
         </>
