@@ -1,20 +1,18 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import s from './Card.module.scss'
-import Link from 'next/link'
 
-const Card = ({ image, name, sizes, id }) => {
+const Card = ({ image, sizes, id, item }) => {
+    const { i18n } = useTranslation()
+    const lang = i18n.language
+    const name = item?.[`name_${lang}`] || item?.name_en || ''
+
     return (
-        <div
-            //  href={`/product/${id}`}
-            className={s.card}>
+        <div className={s.card}>
             <img src={image} alt={name} />
             <div className={s.card_body}>
                 <p>{name}</p>
                 <span>
-                    {/* <h6>R17,</h6>
-                    <h6>R18,</h6>
-                    <h6>R19,</h6>
-                    <h6>R20</h6> */}
                     {sizes?.map((size, i) => (
                         <h6 key={i}>{size}</h6>
                     ))}

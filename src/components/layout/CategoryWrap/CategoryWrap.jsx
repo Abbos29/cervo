@@ -25,6 +25,9 @@ const CategoryWrap = ({
         return item?.[`${key}_${lang}`] || item?.[`${key}_en`] // fallback to English
     }
 
+    console.log(data);
+    
+
 
     return (
         <>
@@ -50,6 +53,8 @@ const CategoryWrap = ({
                             <Loader />
                         ) : error ? (
                             <NotFound />
+                        ) : !data?.length ? (
+                            <NotFound />
                         ) : (
                             <div className={s.products_wrapper}>
                                 {data?.map((el) => (
@@ -57,8 +62,8 @@ const CategoryWrap = ({
                                         key={el?.id}
                                         id={el?.id}
                                         image={el?.image}
-                                        name={getLocalizedText(el)}
                                         sizes={el?.sizes}
+                                        item={el}
                                     />
                                 ))}
                             </div>

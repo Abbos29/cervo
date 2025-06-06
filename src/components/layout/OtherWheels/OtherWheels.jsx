@@ -8,6 +8,7 @@ import { useIsClient } from 'usehooks-ts'
 const OtherWheels = ({ wheels }) => {
   const { t } = useTranslation()
   const isClient = useIsClient()
+  
   return (
     <>
       <Container>
@@ -17,7 +18,7 @@ const OtherWheels = ({ wheels }) => {
         <div className={s.wrap}>
           {wheels?.map((el) => (
             <>
-              <Card key={el?.id} id={el?.id} image={el?.image} name={el?.name} sizes={el?.sizes} />
+              <Card key={el?.id} id={el?.id} image={el?.image} item={el} sizes={el?.sizes} />
             </>
           ))}
         </div>

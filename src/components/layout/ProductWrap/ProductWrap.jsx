@@ -4,12 +4,18 @@ import Container from '@/components/ui/Container/Container'
 import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs';
 import { useTranslation } from 'react-i18next';
 import { useIsClient } from 'usehooks-ts';
+import NotFound from '@/components/ui/NotFound/NotFound';
 
 const ProductWrap = ({ data }) => {
     const [active, setActive] = useState(0)
     const [focusedSize, setFocusedSize] = useState(0)
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
     const isClient = useIsClient()
+
+    const getLocalizedText = (item, key) => {
+        const lang = i18n.language
+        return item?.[`${key}_${lang}`] || item?.[`${key}_en`] || ''
+    }
 
     const characteristics = [
         { name: t('characteristics.dry'), rating: data?.dry },
@@ -18,7 +24,6 @@ const ProductWrap = ({ data }) => {
         { name: t('characteristics.noise'), rating: data?.noise },
         { name: t('characteristics.treadwear'), rating: data?.tread_wear }
     ];
-
 
     const renderRatingFields = (rating) => {
         const maxFields = 5;
@@ -33,10 +38,12 @@ const ProductWrap = ({ data }) => {
     };
 
     return (
-        <>
-            <section className={s.productWrap}>
+        <section className={s.productWrap}>
+            {!data ? (
+                <NotFound />
+            ) : (
                 <Container>
-                    <Breadcrumbs lastTitle={data?.name} />
+                    <Breadcrumbs lastTitle={getLocalizedText(data, 'name')} />
                     <div className={s.wrapper}>
                         <div className={s.gallery}>
                             <div className={s.gallery_images}>
@@ -50,15 +57,16 @@ const ProductWrap = ({ data }) => {
 
                         <div className={s.content}>
                             <div className={s.top}>
-                                <h1>{data?.name}</h1>
-                                <h2>{data?.category}</h2>
+                                <h1>{getLocalizedText(data, 'name')}</h1>
+                                <h2>{getLocalizedText(data?.category, 'name')}</h2>
                             </div>
 
-                            <h3>{data?.sub_title}</h3>
+                            <h3>{getLocalizedText(data, 'sub_title')}</h3>
 
-                            <p>
-                                {data?.description}
-                            </p>
+                            <div
+                                className={s.description}
+                                dangerouslySetInnerHTML={{ __html: getLocalizedText(data, 'description') }}
+                            />
 
                             <div className={s.sizes}>
                                 {data?.sizes?.map((size, i) => (
@@ -85,11 +93,10 @@ const ProductWrap = ({ data }) => {
                                 ))}
                             </div>
                         </div>
-
                     </div>
                 </Container>
-            </section>
-        </>
+            )}
+        </section>
     )
 }
 

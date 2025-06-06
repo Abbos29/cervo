@@ -24,9 +24,6 @@ const CategoryPage = ({ materials }) => {
         fetcher
     )
 
-    console.log(data);
-
-
     return (
         <>
             {isClient && (
