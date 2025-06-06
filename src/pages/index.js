@@ -13,10 +13,11 @@ export const getServerSideProps = async () => {
   const { data: numbers } = await axiosInstance.get(`/numbers`)
   const { data: benefits } = await axiosInstance.get(`/benefits`)
   const { data: socials } = await axiosInstance.get(`/socials`)
-  return { props: { numbers, benefits, socials } }
+  const { data: general } = await axiosInstance.get(`/general`)
+  return { props: { numbers, benefits, socials, general } }
 }
 
-const Home = ({ numbers, benefits, socials }) => {
+const Home = ({ numbers, benefits, socials, general }) => {
   const { t } = useTranslation()
   const isClient = useIsClient()
   return (
@@ -24,9 +25,9 @@ const Home = ({ numbers, benefits, socials }) => {
       {isClient && <>
         <HeadSeo title={t("pages.main")} />
         <Hero />
-        <Numbers numbers={numbers} />
-        <Benefits benefits={benefits} />
-        <ContactsWrap socials={socials} />
+        <Numbers general={general} numbers={numbers} />
+        <Benefits general={general} benefits={benefits} />
+        <ContactsWrap general={general} socials={socials} />
       </>
       }
     </>
