@@ -4,16 +4,26 @@ import Container from '@/components/ui/Container/Container'
 
 const Hero = () => {
     return (
-        <>
-            <section className={s.hero}>
-                <Container>
-                    <div className={s.poster}>
-                        <img src="/img/logo.png" alt="poster" />
-                    </div>
+        <section className={s.hero}>
+            <div className={s.video}>
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className={s.backgroundVideo}
+                >
+                    <source src="/video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
 
-                </Container>
-            </section>
-        </>
+            <Container>
+                {/* <div className={s.poster}>
+                    <img src="/img/logo.png" alt="poster" />
+                </div> */}
+            </Container>
+        </section>
     )
 }
 
