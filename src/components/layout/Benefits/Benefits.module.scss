@@ -6,21 +6,25 @@
 
     background-image: url(/img/benefits-bg-2.png);
     background-repeat: repeat-x;
-    
+
     background-size: contain;
     background-position: center;
 
     min-height: 900px;
-    
+
     @media (max-width: 1600px) {
-    background: #121212;
-    padding: 100px 0;
-    background-image: none;
-      
+        // padding: 100px 0;
+        padding: 0;
+        background-size: cover;
+        background-position: right;
+
+        min-height: 1000px;
     }
 
     @media (max-width: 768px) {
         padding: 100px 0;
+        
+        min-height: 1700px;
     }
 
     // &::after,
