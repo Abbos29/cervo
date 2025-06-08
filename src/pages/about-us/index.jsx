@@ -19,7 +19,7 @@ const AboutUs = ({ socials, general }) => {
     <>
       {isClient && <>
         <HeadSeo title={t("nav.link4")} />
-        <AboutHero />
+        <AboutHero general={general} />
         <ContactsWrap general={general} socials={socials} />
       </>}
     </>
