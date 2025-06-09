@@ -6,7 +6,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 const ProductPage = ({ data, wheels }) => {
-    const isOurWheels = true;
+    const isOurWheels = false;
     const { i18n } = useTranslation();
     const currentLang = i18n.language;
 
@@ -21,13 +21,17 @@ const ProductPage = ({ data, wheels }) => {
         }
     };
 
+
     return (
         <>
             <HeadSeo
                 title={getTranslated('name')}
-                description={getTranslated('description')} />
+                image={data.images[0]}
+            // description={getTranslated('description')}
+            />
             <ProductWrap data={data} />
             {isOurWheels && <OtherWheels wheels={wheels} />}
+
         </>
     )
 }

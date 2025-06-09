@@ -37,7 +37,11 @@ const BatteriesWrap = () => {
                     <img className={s.main_bg} src="/img/batteries-bg.png" alt="bg" />
 
                     <div className={s.top}>
-                        <Breadcrumbs white={true} />
+                        <Breadcrumbs white={true}
+                            staticItems={[
+                                { label: 'Category', href: '/category' },
+                            ]}
+                        />
                     </div>
 
                     <div className={s.wrapper}>

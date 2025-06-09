@@ -10,11 +10,10 @@
     background-size: contain;
     background-position: center;
 
-    min-height: 900px;
+    // min-height: 900px;
 
     @media (max-width: 1600px) {
-        // padding: 100px 0;
-        padding: 0;
+        padding: 160px 0;
         background-size: cover;
         background-position: right;
 

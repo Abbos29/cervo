@@ -3,13 +3,12 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import s from './Breadcrumbs.module.scss'
 
-const Breadcrumbs = ({ lastTitle, white = false }) => {
+const Breadcrumbs = ({ lastTitle, white = false, staticItems = [] }) => {
     const router = useRouter()
 
     const pathParts = router.asPath.split('?')[0].split('/').filter(Boolean)
 
     const breadcrumbs = pathParts.map((part, index) => {
-        const originalPart = part
         const isProduct = part === 'product'
         const partForHref = isProduct ? 'category' : part
 
@@ -33,9 +32,7 @@ const Breadcrumbs = ({ lastTitle, white = false }) => {
                 {isLast && lastTitle ? (
                     <Link href="#" className={`${s.link} ${white ? s.whiteText : ''}`}>{name}</Link>
                 ) : (
-                    <Link href={href} className={`${s.link} ${white ? s.whiteText : ''}`}>
-                        {name}
-                    </Link>
+                    <Link href={href} className={`${s.link} ${white ? s.whiteText : ''}`}>{name}</Link>
                 )}
             </React.Fragment>
         )
@@ -54,6 +51,17 @@ const Breadcrumbs = ({ lastTitle, white = false }) => {
             <h3 className={white ? s.whiteText : ''}>{pageTitle}</h3>
             <div>
                 <Link href="/" className={`${s.link} ${white ? s.whiteText : ''}`}>Home</Link>
+
+                {/* Вставляем кастомные пути (если есть) */}
+                {staticItems.map((item, idx) => (
+                    <React.Fragment key={idx}>
+                        <span className={`${s.separator} ${white ? s.whiteText : ''}`}>/</span>
+                        <Link href={item.href} className={`${s.link} ${white ? s.whiteText : ''}`}>
+                            {item.label}
+                        </Link>
+                    </React.Fragment>
+                ))}
+
                 {breadcrumbs}
             </div>
         </nav>

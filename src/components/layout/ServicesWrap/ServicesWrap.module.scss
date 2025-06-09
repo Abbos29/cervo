@@ -67,6 +67,11 @@
             padding: 12px;
             max-width: 100%;
             width: auto;
+            font-size: 16px;
+        }
+
+        @media (max-width: 380px) {
+            font-size: 12px;
         }
 
         &.activeTab {
@@ -105,7 +110,7 @@
     h2 {
         font-weight: 800;
         // font-size: 120px;
-        font-size: clamp(2.813rem, 1.166rem + 6.76vw, 7.5rem);
+        font-size: clamp(2.213rem, 0.966rem + 6.76vw, 7.5rem);
         line-height: 1;
         letter-spacing: 10%;
         font-variant: small-caps;
@@ -139,7 +144,7 @@
             color: #b8b8b8;
 
             @media (max-width: 480px) {
-              font-size: 22px;
+                font-size: 22px;
             }
         }
 
@@ -149,7 +154,7 @@
             color: #121212;
 
             @media (max-width: 480px) {
-              font-size: 26px;
+                font-size: 26px;
             }
         }
     }
@@ -161,7 +166,7 @@
         color: #8b8b8b;
 
         @media (max-width: 480px) {
-          font-size: 16px;
+            font-size: 16px;
         }
     }
 }
