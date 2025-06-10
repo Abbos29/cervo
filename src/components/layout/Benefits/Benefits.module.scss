@@ -25,36 +25,42 @@
 
         // min-height: 1700px;
         background: #121212;
-        border-radius: 100px 0 100px 0;
+        // border-radius: 100px 0 100px 0;
     }
 
-    // &::after,
-    // &::before {
-    //     content: "";
-    //     width: 100%;
-    //     position: absolute;
-    //     z-index: 2;
-    //     height: 120px;
-    //     background-repeat: no-repeat;
-    //     background-size: 100%;
-    // }
+    &::after,
+    &::before {
+        content: "";
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+        height: 120px;
+        background-repeat: no-repeat;
+        background-size: 100%;
 
-    // &::after {
-    //     bottom: -2px;
-    //     left: 0;
-    //     height: 140px;
-    //     background-image: url(/img/hero-after-wave.svg);
-    //     background-position: center bottom;
-    // }
+        display: none;
 
-    // &::before {
-    //     rotate: 180deg;
-    //     top: -2px;
-    //     left: 0;
-    //     height: 140px;
-    //     background-image: url(/img/hero-after-wave.svg);
-    //     background-position: center bottom;
-    // }
+        @media (max-width: 480px) {
+            display: block;
+        }
+    }
+
+    &::after {
+        bottom: -1px;
+        left: 0;
+        height: 140px;
+        background-image: url(/img/hero-after-wave.svg);
+        background-position: center bottom;
+    }
+
+    &::before {
+        rotate: 180deg;
+        top: -1px;
+        left: 0;
+        height: 140px;
+        background-image: url(/img/hero-after-wave.svg);
+        background-position: center bottom;
+    }
 }
 
 .top {
