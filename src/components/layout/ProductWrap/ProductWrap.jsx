@@ -9,20 +9,20 @@ import NotFound from '@/components/ui/NotFound/NotFound';
 const ProductWrap = ({ data }) => {
     const [active, setActive] = useState(0)
     const [focusedSize, setFocusedSize] = useState(0)
-    const { t, i18n } = useTranslation()
+    const { t } = useTranslation()
     const isClient = useIsClient()
 
-    const getLocalizedText = (item, key) => {
-        const lang = i18n.language
-        return item?.[`${key}_${lang}`] || item?.[`${key}_en`] || ''
-    }
+    // const getLocalizedText = (item, key) => {
+    //     const lang = i18n.language
+    //     return item?.[`${key}_${lang}`] || item?.[`${key}_en`] || ''
+    // }
 
     const characteristics = [
-        { name: t('characteristics.dry'), rating: data?.dry },
-        { name: t('characteristics.wet'), rating: data?.wet },
-        { name: t('characteristics.snow'), rating: data?.snow },
-        { name: t('characteristics.noise'), rating: data?.noise },
-        { name: t('characteristics.treadwear'), rating: data?.tread_wear }
+        { name: t('characteristics.dry'), rating: 5 },
+        { name: t('characteristics.wet'), rating: 4 },
+        { name: t('characteristics.snow'), rating: 3 },
+        { name: t('characteristics.noise'), rating: 2 },
+        { name: t('characteristics.treadwear'), rating: 1 }
     ];
 
     const renderRatingFields = (rating) => {
@@ -43,12 +43,18 @@ const ProductWrap = ({ data }) => {
                 <NotFound />
             ) : (
                 <Container>
-                    <Breadcrumbs lastTitle={getLocalizedText(data, 'name')} />
+                    <Breadcrumbs lastTitle={t(data?.name)} />
                     <div className={s.wrapper}>
                         <div className={s.gallery}>
                             <div className={s.gallery_images}>
                                 {data?.images?.map((el, i) => (
-                                    <img className={i === active ? s.active : ''} onClick={() => setActive(i)} src={el} alt={i} key={i} />
+                                    <img
+                                        className={i === active ? s.active : ''}
+                                        onClick={() => setActive(i)}
+                                        src={el}
+                                        alt={i}
+                                        key={i}
+                                    />
                                 ))}
                             </div>
 
@@ -57,15 +63,18 @@ const ProductWrap = ({ data }) => {
 
                         <div className={s.content}>
                             <div className={s.top}>
-                                <h1>{getLocalizedText(data, 'name')}</h1>
-                                <h2>{getLocalizedText(data?.category, 'name')}</h2>
+                                <h1>{t(data?.name)}</h1>
+                                <h2>{t(data?.category?.name)}</h2>
                             </div>
 
-                            <h3>{getLocalizedText(data, 'sub_title')}</h3>
+                            <h3>{t(data?.subtitle)}</h3>
 
                             <div
                                 className={s.description}
-                                dangerouslySetInnerHTML={{ __html: getLocalizedText(data, 'description') }}
+                                // ✔ description ham i18n bo‘ldi
+                                dangerouslySetInnerHTML={{
+                                    __html: t(data?.description)
+                                }}
                             />
 
                             <div className={s.sizes}>
@@ -79,6 +88,7 @@ const ProductWrap = ({ data }) => {
                                     </div>
                                 ))}
                             </div>
+
                             <div className={s.table}>
                                 {isClient && characteristics.map((characteristic, index) => (
                                     <div key={index} className={s.table_row}>

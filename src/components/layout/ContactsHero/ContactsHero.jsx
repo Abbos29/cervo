@@ -4,14 +4,16 @@ import Container from '@/components/ui/Container/Container'
 import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { useTranslation } from 'react-i18next'
 
-const ContactsHero = ({ socials }) => {
+const ContactsHero = (
+    // { socials }
+) => {
     const { t } = useTranslation()
     return (
         <section>
             <Container>
                 <div className={s.about_title}>
                     <Breadcrumbs />
-                    <a target='_blank'  href={socials[0]?.address}>
+                    <a target='_blank'  href={`https://www.google.com/maps/place/Tashkent+City+Park/@41.316022,69.2451726,15z/data=!4m6!3m5!1s0x38ae8b40d847941d:0x5765a18b352df71e!8m2!3d41.316022!4d69.2451726!16s%2Fg%2F11c52_5y9v`}>
                         <button className={s.map}>{t("map")}</button>
                     </a>
                 </div>

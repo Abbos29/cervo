@@ -24,8 +24,9 @@
         p {
             font-size: clamp(1rem, 0.853rem + 0.65vw, 1.300rem);
             font-weight: 800;
-            padding-bottom: 6px;
-            min-height: 50px;
+            // padding-bottom: 6px;
+            min-height: 40px;
+            text-transform: uppercase;
         }
 
         span {

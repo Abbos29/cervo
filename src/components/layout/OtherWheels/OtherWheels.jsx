@@ -17,9 +17,9 @@ const OtherWheels = ({ wheels }) => {
             {isClient && <h2>{t("our_wheels")}</h2>}
           </div>
           <div className={s.wrap}>
-            {wheels?.map((el) => (
+            {wheels?.slice(0,12).map((el) => (
               <>
-                <Card key={el?.id} id={el?.id} image={el?.image} item={el} sizes={el?.sizes} />
+                <Card name={el?.name} key={el?.id} id={el?.id} image={el?.image} item={el} sizes={el?.sizes} />
               </>
             ))}
           </div>

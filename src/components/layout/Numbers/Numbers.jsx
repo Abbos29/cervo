@@ -1,78 +1,46 @@
-import React, { useEffect, useRef, useState } from 'react'
-import CountUp from 'react-countup'
-import { useIsClient } from 'usehooks-ts'
-import s from './Numbers.module.scss'
-import Container from '@/components/ui/Container/Container'
-import Pretitle from '@/components/ui/Pretitle/Pretitle'
-import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
-import { useTranslation } from 'react-i18next'
+import React from 'react';
+import CountUp from 'react-countup';
+import { useIsClient } from 'usehooks-ts';
+import s from './Numbers.module.scss';
+import Container from '@/components/ui/Container/Container';
+import Pretitle from '@/components/ui/Pretitle/Pretitle';
+import SectionTitle from '@/components/ui/SectionTitle/SectionTitle';
+import { useTranslation } from 'react-i18next';
 
-const Numbers = ({ numbers, general }) => {
-    const isClient = useIsClient()
-    const [hasAnimated, setHasAnimated] = useState(false)
-    const ref = useRef(null)
-    const { i18n } = useTranslation()
+const Numbers = () => {
+    const isClient = useIsClient();
+    const { t } = useTranslation();
 
-    const getLocalizedText = (item, key) => {
-        const lang = i18n.language
-        return item?.[`${key}_${lang}`] || item?.[`${key}_en`] || ''
-    }
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting && !hasAnimated) {
-                        setHasAnimated(true)
-                    }
-                })
-            },
-            {
-                threshold: 0.1,
-                rootMargin: '100px 0px -50px 0px'
-            }
-        )
-
-        if (ref.current) observer.observe(ref.current)
-
-        return () => {
-            if (ref.current) observer.unobserve(ref.current)
-        }
-    }, [hasAnimated])
+    const cards = t("numbers.cards", { returnObjects: true });
 
     return (
-        <section className={s.numbers} ref={ref}>
+        <section className={s.numbers}>
             {isClient && (
                 <Container>
                     <div className={s.wrapper}>
-                        <Pretitle>{getLocalizedText(general?.number, 'word')}</Pretitle>
-                        <SectionTitle white>{getLocalizedText(general?.number, 'title')}</SectionTitle>
+                        <Pretitle>{t("numbers.pretitle")}</Pretitle>
+                        <SectionTitle white>{t("numbers.title")}</SectionTitle>
 
                         <div className={s.cards}>
-                            {numbers?.map((card, index) => (
-                                <div className={s.card} key={card?.id}>
+                            {cards?.map((card, index) => (
+                                <div className={s.card} key={index}>
                                     <div>
-                                        <h5>{getLocalizedText(card, 'name')}</h5>
+                                        <h5>{card.title}</h5>
+
                                         <h4>
-                                            {hasAnimated ? (
-                                                <CountUp
-                                                    start={0}
-                                                    end={card?.value}
-                                                    duration={2.5}
-                                                    delay={index * 0.2}
-                                                    separator=" "
-                                                    suffix={'+'}
-                                                    useEasing={true}
-                                                    easingFn={(t, b, c, d) =>
-                                                        c * (1 - Math.pow(2, -10 * t / d)) + b
-                                                    }
-                                                />
-                                            ) : (
-                                                `0+`
-                                            )}
+                                            <CountUp
+                                                start={0}
+                                                end={card.value}
+                                                duration={2.5}
+                                                delay={index * 0.2}
+                                                separator=" "
+                                                suffix="+"
+                                                useEasing={true}
+                                            />
                                         </h4>
                                     </div>
-                                    <img src={card?.icon} alt={`${getLocalizedText(card, 'name')} icon`} />
+
+                                    <img src={card.icon} alt={card.title} />
                                 </div>
                             ))}
                         </div>
@@ -80,7 +48,7 @@ const Numbers = ({ numbers, general }) => {
                 </Container>
             )}
         </section>
-    )
-}
+    );
+};
 
-export default Numbers
+export default Numbers;

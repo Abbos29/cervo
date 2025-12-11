@@ -6,14 +6,11 @@ import Pretitle from '@/components/ui/Pretitle/Pretitle'
 import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
 import { useIsClient } from 'usehooks-ts'
 
-const Benefits = ({ benefits, general }) => {
-    const { t, i18n } = useTranslation()
+const Benefits = () => {
+    const { t } = useTranslation()
     const isClient = useIsClient()
 
-    const getLocalizedText = (item, key) => {
-        const lang = i18n.language
-        return item?.[`${key}_${lang}`] || item?.[`${key}_en`] || ''
-    }
+    const benefits = t("benefits.cards", { returnObjects: true })
 
     return (
         <section className={s.benefits}>
@@ -21,16 +18,16 @@ const Benefits = ({ benefits, general }) => {
                 <Container>
                     <div className={s.top}>
                         <Pretitle>{t('benefits.pretitle')}</Pretitle>
-                        <SectionTitle white>{getLocalizedText(general?.benefit, 'title')}</SectionTitle>
-                        <p dangerouslySetInnerHTML={{ __html: getLocalizedText(general?.benefit, 'description') }} />
+                        <SectionTitle white>{t("benefits.title")}</SectionTitle>
+                        <p dangerouslySetInnerHTML={{ __html: t("benefits.description") }} />
                     </div>
 
                     <div className={s.wrapper}>
-                        {benefits?.map((benefit) => (
-                            <div className={s.card} key={benefit?.id}>
-                                <img src={benefit?.icon} alt="icon" />
-                                <h3>{getLocalizedText(benefit, 'title')}</h3>
-                                <p dangerouslySetInnerHTML={{ __html: getLocalizedText(benefit, 'description') }} />
+                        {benefits?.map((benefit, index) => (
+                            <div className={s.card} key={index}>
+                                <img src={benefit.icon} alt="icon" />
+                                <h3>{benefit.title}</h3>
+                                <p dangerouslySetInnerHTML={{ __html: benefit.text }} />
                             </div>
                         ))}
                     </div>

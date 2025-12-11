@@ -6,21 +6,17 @@ import { useIsClient } from 'usehooks-ts'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import NotFound from '@/components/ui/NotFound/NotFound'
+import { categories } from '@/db/categories'
 
-const stripHtml = (html) => {
-    if (typeof window === 'undefined') return html;
-    const div = document.createElement('div')
-    div.innerHTML = html
-    return div.textContent || div.innerText || ''
-}
-
-const ProductsWrap = ({ data }) => {
+const ProductsWrap = () => {
     const isClient = useIsClient()
-    const { t, i18n } = useTranslation()
+    const { t } = useTranslation()
 
-    const getLocalizedField = (el, field) => {
-        const lang = i18n.language
-        return el[`${field}_${lang}`] || el[`${field}_en`] // fallback to English
+    const getHref = (name) => {
+        if (name === "categories.wheels.name") return `/category/3?category_name=Wheels`
+        if (name === "categories.tires.name") return '/product/2'
+        if (name === "categories.batteries.name") return '/batteries'
+        return '#'
     }
 
     return (
@@ -30,25 +26,18 @@ const ProductsWrap = ({ data }) => {
                     <Container>
                         <Breadcrumbs />
 
-                        {data && data.length ? (
+                        {categories && categories.length ? (
                             <div className={s.wrapper}>
-                                {data.map((el) => {
-                                    let href = '#'
+                                {categories.map((cat) => {
+                                    const translatedName = t(cat.name)
+                                    const translatedDesc = t(cat.description)
+                                    const href = getHref(cat.name)
 
-                                    if (el.name_en === 'Wheels') {
-                                        href = `/category/${el.id}?category_name=${encodeURIComponent(el.name_en)}`
-                                    } else if (el.name_en === 'Tires') {
-                                        href = '/product/2'
-                                    } else if (el.name_en === 'Batteries') {
-                                        href = '/batteries'
-                                    }
-                                    const name = getLocalizedField(el, 'name')
-                                    const desc = stripHtml(getLocalizedField(el, 'description'))
                                     return (
-                                        <Link key={el.id} href={href} className={s.card}>
-                                            {el.icon && <img src={el.icon} alt={name} />}
-                                            <h3>{name}</h3>
-                                            {desc && <p>{desc}</p>}
+                                        <Link key={cat.id} href={href} className={s.card}>
+                                            <img src={cat.image} alt={translatedName} />
+                                            <h3>{translatedName}</h3>
+                                            {translatedDesc && <p>{translatedDesc}</p>}
                                         </Link>
                                     )
                                 })}

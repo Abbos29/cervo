@@ -5,38 +5,35 @@ import Container from '@/components/ui/Container/Container'
 import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { useTranslation } from 'react-i18next'
 
-const ServicesWrap = ({ data, type }) => {
-    const { t, i18n } = useTranslation()
-    const lang = i18n.language || 'en'
-
-    const findCurrentType = data?.find((el) => {
-        return el?.name_en.toLowerCase() === type;
-    })
-
-    const getTranslatedTitle = (item) => {
-        switch (lang) {
-            case 'ru': return item?.title_ru
-            case 'ar': return item?.title_ar
-            default: return item?.title_en
+const ServicesWrap = (
+    { type }
+) => {
+    const { t } = useTranslation()
+    const data = [
+        {
+            id: 1,
+            name: 'services.batteries',
+            slug: 'batteries',
+            title: 'services.title_battery',
+            desc: 'services.desc_battery'
+        },
+        {
+            id: 2,
+            name: 'services.tires',
+            slug: 'tires',
+            title: 'services.title_tire',
+            desc: 'services.desc_tire'
+        },
+        {
+            id: 3,
+            name: 'services.wheels',
+            slug: 'wheels',
+            title: 'services.title_wheel',
+            desc: 'services.desc_wheel'
         }
-    }
+    ];
 
-    const getTranslatedType = (item) => {
-        switch (lang) {
-            case 'ru': return item?.name_ru
-            case 'ar': return item?.name_ar
-            default: return item?.name_en
-        }
-    }
-
-    const getTranslatedDescription = (item) => {
-        switch (lang) {
-            case 'ru': return item?.description_ru
-            case 'ar': return item?.description_ar
-            default: return item?.description_en
-        }
-    }
-
+    const currentTab = data.find(tab => tab.slug === type) || data[0];
     return (
         <>
             <section className={s.servicesWrap}>
@@ -47,20 +44,21 @@ const ServicesWrap = ({ data, type }) => {
                             <div className={s.top_category}>
                                 {data.map(tab => (
                                     <Link
-                                        key={tab?.id}
-                                        href={`/services/${tab?.name_en.toLowerCase()}`}
-                                        className={tab?.name_en.toLowerCase() === type ? s.activeTab : ''}
+                                        key={tab.id}
+                                        href={`/services/${tab.slug}`}
+                                        className={tab.slug === type ? s.activeTab : ''}
                                     >
-                                        {lang === 'ru' ? tab?.name_ru : lang === 'ar' ? tab?.name_ar : tab?.name_en}
+                                        {t(tab.name)}
                                     </Link>
                                 ))}
                             </div>
+
                         </div>
 
                         <div className={s.title}>
                             <h3>{t("nav.link3")}</h3>
                             <h2>
-                                <span>{getTranslatedType(findCurrentType).toUpperCase()}</span>
+                                <span>{t(currentTab.name).toUpperCase()}</span>
                                 <br />
                                 {t("warranty")}
                             </h2>
@@ -74,9 +72,9 @@ const ServicesWrap = ({ data, type }) => {
                     <div className={s.content_box}>
                         <div>
                             <h4>2025</h4>
-                            <h3>{getTranslatedTitle(findCurrentType)}</h3>
+                            <h3>{t(currentTab.title)}</h3>
                         </div>
-                        <div dangerouslySetInnerHTML={{ __html: getTranslatedDescription(findCurrentType) }} />
+                        <div dangerouslySetInnerHTML={{ __html: t(currentTab.desc) }} />
                     </div>
                 </Container>
             </section>

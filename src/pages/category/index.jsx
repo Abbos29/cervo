@@ -6,16 +6,18 @@ import { useTranslation } from 'react-i18next'
 import { useIsClient } from 'usehooks-ts'
 
 
-export const getServerSideProps = async () => {
-    const { data } = await axiosInstance.get(`/categories/`)
-    return {
-        props: { data }
-    }
-}
+// export const getServerSideProps = async () => {
+//     const { data } = await axiosInstance.get(`/categories/`)
+//     return {
+//         props: { data }
+//     }
+// }
 
 
 
-const ProductsPage = ({ data }) => {
+const ProductsPage = (
+    // { data }
+) => {
     const { t } = useTranslation()
     const isClient = useIsClient()
     return (
@@ -23,7 +25,7 @@ const ProductsPage = ({ data }) => {
             {isClient &&
                 <>
                     <HeadSeo title={t("pages.products")} />
-                    <ProductsWrap data={data} />
+                    <ProductsWrap/>
                 </>
             }
         </>
